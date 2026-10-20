@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oyinkansola & Ayolekan — Wedding Registry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Gloock&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#5B1A33; --wine-deep:#3E1023; --gold:#B8913F; --gold-soft:#E7D3A3;
+  --blush:#FBF3F4; --paper:#FFFFFF; --ink:#2A1A20; --muted:#7A6168; --line:#EAD9DD;
+  --surface:#FFFFFF; --bg:var(--blush);
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C0E14; --surface:#2A1720; --ink:#F6E9EC; --muted:#C9AEB6; --line:#45293A;
+    --wine:#E3A6BA; --wine-deep:#120709; --gold:#D9B66A; --gold-soft:#5A4524; --paper:#2A1720;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C0E14; --surface:#2A1720; --ink:#F6E9EC; --muted:#C9AEB6; --line:#45293A;
+  --wine:#E3A6BA; --wine-deep:#120709; --gold:#D9B66A; --gold-soft:#5A4524; --paper:#2A1720;
+  color-scheme: dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* Hero */
+.hero{background:#3E1023;color:#FBF3F4;text-align:center;padding:72px 20px 0;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 50% 120%, rgba(184,145,63,.35), transparent 60%);pointer-events:none}
+.mono{font-family:"Gloock",Georgia,serif;font-size:15px;letter-spacing:.3em;color:#E7D3A3;margin:0 0 18px}
+.names{font-family:"Pinyon Script",cursive;font-weight:400;font-size:clamp(52px,11vw,112px);line-height:1;margin:0;color:#FBF3F4}
+.names .and{display:block;font-family:"Gloock",Georgia,serif;font-size:.28em;color:#E7D3A3;margin:.25em 0 .1em}
+.hero p.lede{max-width:34em;margin:22px auto 0;color:#EBD6DB;font-size:17px}
+.arch-row{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,3vw,28px);margin-top:48px;position:relative}
+.arch{width:clamp(110px,26vw,230px);aspect-ratio:3/4.2;border-radius:999px 999px 0 0;overflow:hidden;border:3px solid #B8913F;border-bottom:0;background:#5B1A33;position:relative}
+.arch.center{width:clamp(140px,34vw,290px)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#E7D3A3;font-family:"Gloock",Georgia,serif;font-size:clamp(30px,6vw,54px);gap:6px}
+.arch .ph small{font-family:"Figtree",sans-serif;font-size:12px;color:#D9BFC6;letter-spacing:.02em}
+
+/* Layout */
+main{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0 0}
+h2{font-family:"Gloock",Georgia,serif;font-weight:400;font-size:clamp(30px,5vw,44px);line-height:1.15;margin:0 0 10px;color:var(--wine)}
+.sub{color:var(--muted);max-width:40em;margin:0 0 28px}
+
+/* Gift account */
+.account{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface)}
+.account .left{padding:34px;border-right:1px solid var(--line)}
+.account .right{padding:34px;background:var(--wine-deep);color:#FBF3F4;display:flex;flex-direction:column;justify-content:center}
+.acct-label{color:#D9BFC6;font-size:14px;margin:0}
+.acct-num{font-family:"Gloock",Georgia,serif;font-size:clamp(34px,6vw,48px);letter-spacing:.06em;margin:2px 0 14px;color:#E7D3A3;word-break:break-all}
+.acct-meta{margin:0 0 4px;font-size:16px}
+.copy-btn{margin-top:20px;align-self:flex-start;background:#B8913F;color:#2A1A20;border:0;border-radius:999px;padding:12px 22px;font-weight:600}
+.copy-btn:hover{background:#CBA552}
+.account ol{margin:0;padding-left:20px;color:var(--ink)}
+.account ol li{margin-bottom:10px}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:var(--bg)}
+
+/* Registry list */
+.registry{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column}
+.item .emoji{font-size:30px;line-height:1;margin-bottom:14px}
+.item h3{font-family:"Gloock",Georgia,serif;font-weight:400;font-size:21px;margin:0 0 4px;line-height:1.25}
+.item p{margin:0 0 16px;color:var(--muted);font-size:15px;flex:1}
+.item .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.price{font-weight:600;color:var(--wine)}
+.gift-btn{border:1px solid var(--gold);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500}
+.gift-btn:hover{background:var(--gold);color:#2A1A20}
+.item.pledged{border-color:var(--gold)}
+.item.pledged .gift-btn{background:var(--gold);color:#2A1A20}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gallery figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--surface);border:1px solid var(--line);position:relative}
+.gallery figure:nth-child(2){transform:translateY(28px)}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}
+
+footer{text-align:center;padding:96px 20px 56px;color:var(--muted)}
+footer .sig{font-family:"Pinyon Script",cursive;font-size:44px;color:var(--wine);margin:0}
+
+/* Dialog */
+dialog{border:0;border-radius:22px;padding:0;max-width:420px;width:calc(100% - 32px);background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(30,8,16,.6)}
+.dlg{padding:30px}
+.dlg h3{font-family:"Gloock",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px;color:var(--wine)}
+.dlg .amt{font-size:15px;color:var(--muted);margin:0 0 18px}
+.dlg .box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+.dlg .box div{display:flex;justify-content:space-between;gap:12px;padding:4px 0;font-size:15px}
+.dlg .box span:first-child{color:var(--muted)}
+.dlg .box strong{text-align:right}
+.dlg .actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-solid{background:var(--wine);color:var(--bg);border:0;border-radius:999px;padding:11px 20px;font-weight:600}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:11px 20px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:#3E1023;color:#FBF3F4;padding:12px 20px;border-radius:999px;font-size:15px;opacity:0;transition:opacity .25s, transform .25s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:760px){
+  .account{grid-template-columns:1fr}
+  .account .left{border-right:0;border-bottom:1px solid var(--line)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery figure:nth-child(2){transform:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.status{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:-8px 0 22px;color:var(--muted);font-size:15px}
+.bar{flex:1;min-width:160px;max-width:280px;height:6px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--gold)}
+.owner-note{background:var(--surface);border:1px dashed var(--gold);border-radius:14px;padding:12px 16px;margin:0 0 22px;font-size:15px}
+.item.gifted{opacity:.62}
+.item.gifted .price{text-decoration:line-through}
+.badge{font-size:13px;font-weight:600;color:var(--gold)}
+.gift-btn:disabled{cursor:default;opacity:.7}
+.gift-btn.owner{border-style:dashed}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="mono">O &amp; A</p>
+  <h1 class="names">Oyinkansola<span class="and">and</span>Ayolekan</h1>
+  <p class="lede">Thank you for celebrating with us. If you’d like to bless our new home, here are the things we’ll need as we start our life together.</p>
+  <div class="arch-row">
+    <div class="arch"><div class="ph">O<small>Bride’s photo</small></div></div>
+    <div class="arch center"><div class="ph">O&amp;A<small>Couple photo</small></div></div>
+    <div class="arch"><div class="ph">A<small>Groom’s photo</small></div></div>
+  </div>
+</header>
+<main>
+  <section id="give" aria-labelledby="give-h">
+    <h2 id="give-h">Send a gift</h2>
+    <p class="sub">Every gift goes into one account. Pick an item below for a guide on how much to send, or give any amount you like.</p>
+    <div class="account">
+      <div class="left">
+        <ol>
+          <li>Choose an item that hasn’t been gifted yet, or decide on any amount.</li>
+          <li>Transfer to the account shown here.</li>
+          <li>Add your name and the item in the transfer narration so the couple knows who to thank.</li>
+        </ol>
+      </div>
+      <div class="right">
+        <p class="acct-label">Account number</p>
+        <p class="acct-num" id="acctNum">0000000000</p>
+        <p class="acct-meta"><span style="color:#D9BFC6">Bank:</span> <span id="acctBank">Bank name</span></p>
+        <p class="acct-meta"><span style="color:#D9BFC6">Name:</span> <span id="acctName">Oyinkansola Folorunsho</span></p>
+        <button class="copy-btn" type="button" data-copy>Copy account number</button>
+      </div>
+    </div>
+  </section>
+  <section id="registry" aria-labelledby="reg-h">
+    <h2 id="reg-h">The registry</h2>
+    <p class="sub">Prices are a guide. Items already gifted are marked, so you can choose something still needed.</p>
+    <div class="status"><span id="countText"></span><div class="bar" aria-hidden="true"><span id="barFill" style="width:0"></span></div></div>
+    <p class="owner-note" id="ownerNote" hidden>You can manage this registry. When a transfer comes in, open the item and tap “Mark as gifted”. Every guest will see it.</p>
+    <div class="filters" role="group" aria-label="Filter by room">
+      <button class="chip" aria-pressed="true" data-filter="all">Everything</button>
+      <button class="chip" aria-pressed="false" data-filter="Kitchen">Kitchen</button>
+      <button class="chip" aria-pressed="false" data-filter="Appliances">Appliances</button>
+      <button class="chip" aria-pressed="false" data-filter="Bedroom">Bedroom &amp; bath</button>
+      <button class="chip" aria-pressed="false" data-filter="Living">Living room</button>
+      <button class="chip" aria-pressed="false" data-filter="Funds">Funds</button>
+    </div>
+    <div class="registry" id="registryList"></div>
+  </section>
+  <section id="us" aria-labelledby="us-h">
+    <h2 id="us-h">Us</h2>
+    <p class="sub">A few moments from our journey so far.</p>
+    <div class="gallery">
+      <figure><div class="ph">Photo 1</div></figure>
+      <figure><div class="ph">Photo 2</div></figure>
+      <figure><div class="ph">Photo 3</div></figure>
+    </div>
+  </section>
+</main>
+<footer>
+  <p class="sig">With love, O &amp; A</p>
+  <p>Thank you for being part of our story.</p>
+</footer>
+<dialog id="giftDialog" aria-labelledby="dlgTitle">
+  <div class="dlg">
+    <h3 id="dlgTitle">Gift</h3>
+    <p class="amt" id="dlgAmt"></p>
+    <div class="box">
+      <div><span>Account number</span><strong id="dlgNum"></strong></div>
+      <div><span>Bank</span><strong id="dlgBank"></strong></div>
+      <div><span>Account name</span><strong id="dlgName"></strong></div>
+      <div><span>Narration</span><strong id="dlgNarr"></strong></div>
+    </div>
+    <p class="amt" id="dlgHint" hidden>Once the couple sees your transfer, they’ll mark this item as gifted for everyone.</p>
+    <div class="actions">
+      <button class="btn-solid" type="button" data-copy>Copy account number</button>
+      <button class="btn-ghost" type="button" id="markBtn" hidden>Mark as gifted</button>
+      <button class="btn-ghost" type="button" id="closeBtn">Close</button>
+    </div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const SRC = "\u003c!DOCTYPE html>\n\u003chtml lang=\"en\">\n\u003chead>\n\u003cmeta charset=\"UTF-8\">\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n\u003ctitle>Oyinkansola & Ayolekan — Wedding Registry\u003c/title>\n\u003clink rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n\u003clink rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n\u003clink href=\"https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Gloock&family=Figtree:wght@400;500;600&display=swap\" rel=\"stylesheet\">\n\u003cstyle>\n:root{\n  --wine:#5B1A33; --wine-deep:#3E1023; --gold:#B8913F; --gold-soft:#E7D3A3;\n  --blush:#FBF3F4; --paper:#FFFFFF; --ink:#2A1A20; --muted:#7A6168; --line:#EAD9DD;\n  --surface:#FFFFFF; --bg:var(--blush);\n  color-scheme: light;\n  box-sizing:border-box;\n  padding-top:env(safe-area-inset-top,0px);\n  padding-bottom:env(safe-area-inset-bottom,0px);\n}\n@media (prefers-color-scheme: dark){\n  :root:not([data-theme=\"light\"]){\n    --bg:#1C0E14; --surface:#2A1720; --ink:#F6E9EC; --muted:#C9AEB6; --line:#45293A;\n    --wine:#E3A6BA; --wine-deep:#120709; --gold:#D9B66A; --gold-soft:#5A4524; --paper:#2A1720;\n    color-scheme: dark;\n  }\n}\n:root[data-theme=\"dark\"]{\n  --bg:#1C0E14; --surface:#2A1720; --ink:#F6E9EC; --muted:#C9AEB6; --line:#45293A;\n  --wine:#E3A6BA; --wine-deep:#120709; --gold:#D9B66A; --gold-soft:#5A4524; --paper:#2A1720;\n  color-scheme: dark;\n}\nhtml{scroll-padding-top:env(safe-area-inset-top,0px)}\n*,*::before,*::after{box-sizing:border-box}\nbody{margin:0;background:var(--bg);color:var(--ink);font-family:\"Figtree\",system-ui,-apple-system,\"Segoe UI\",sans-serif;font-size:16px;line-height:1.6}\nimg{max-width:100%;display:block}\na{color:inherit}\nbutton{font:inherit;cursor:pointer}\n:focus-visible{outline:2px solid var(--gold);outline-offset:3px}\n\n/* Hero */\n.hero{background:#3E1023;color:#FBF3F4;text-align:center;padding:72px 20px 0;position:relative;overflow:hidden}\n.hero::before{content:\"\";position:absolute;inset:0;background:\n  radial-gradient(circle at 50% 120%, rgba(184,145,63,.35), transparent 60%);pointer-events:none}\n.mono{font-family:\"Gloock\",Georgia,serif;font-size:15px;letter-spacing:.3em;color:#E7D3A3;margin:0 0 18px}\n.names{font-family:\"Pinyon Script\",cursive;font-weight:400;font-size:clamp(52px,11vw,112px);line-height:1;margin:0;color:#FBF3F4}\n.names .and{display:block;font-family:\"Gloock\",Georgia,serif;font-size:.28em;color:#E7D3A3;margin:.25em 0 .1em}\n.hero p.lede{max-width:34em;margin:22px auto 0;color:#EBD6DB;font-size:17px}\n.arch-row{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,3vw,28px);margin-top:48px;position:relative}\n.arch{width:clamp(110px,26vw,230px);aspect-ratio:3/4.2;border-radius:999px 999px 0 0;overflow:hidden;border:3px solid #B8913F;border-bottom:0;background:#5B1A33;position:relative}\n.arch.center{width:clamp(140px,34vw,290px)}\n.arch img{width:100%;height:100%;object-fit:cover}\n.arch .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#E7D3A3;font-family:\"Gloock\",Georgia,serif;font-size:clamp(30px,6vw,54px);gap:6px}\n.arch .ph small{font-family:\"Figtree\",sans-serif;font-size:12px;color:#D9BFC6;letter-spacing:.02em}\n\n/* Layout */\nmain{max-width:1080px;margin:0 auto;padding:0 20px}\nsection{padding:72px 0 0}\nh2{font-family:\"Gloock\",Georgia,serif;font-weight:400;font-size:clamp(30px,5vw,44px);line-height:1.15;margin:0 0 10px;color:var(--wine)}\n.sub{color:var(--muted);max-width:40em;margin:0 0 28px}\n\n/* Gift account */\n.account{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface)}\n.account .left{padding:34px;border-right:1px solid var(--line)}\n.account .right{padding:34px;background:var(--wine-deep);color:#FBF3F4;display:flex;flex-direction:column;justify-content:center}\n.acct-label{color:#D9BFC6;font-size:14px;margin:0}\n.acct-num{font-family:\"Gloock\",Georgia,serif;font-size:clamp(34px,6vw,48px);letter-spacing:.06em;margin:2px 0 14px;color:#E7D3A3;word-break:break-all}\n.acct-meta{margin:0 0 4px;font-size:16px}\n.copy-btn{margin-top:20px;align-self:flex-start;background:#B8913F;color:#2A1A20;border:0;border-radius:999px;padding:12px 22px;font-weight:600}\n.copy-btn:hover{background:#CBA552}\n.account ol{margin:0;padding-left:20px;color:var(--ink)}\n.account ol li{margin-bottom:10px}\n\n/* Filters */\n.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}\n.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;font-size:15px}\n.chip[aria-pressed=\"true\"]{background:var(--wine);border-color:var(--wine);color:var(--bg)}\n\n/* Registry list */\n.registry{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}\n.item{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column}\n.item .emoji{font-size:30px;line-height:1;margin-bottom:14px}\n.item h3{font-family:\"Gloock\",Georgia,serif;font-weight:400;font-size:21px;margin:0 0 4px;line-height:1.25}\n.item p{margin:0 0 16px;color:var(--muted);font-size:15px;flex:1}\n.item .row{display:flex;align-items:center;justify-content:space-between;gap:10px}\n.price{font-weight:600;color:var(--wine)}\n.gift-btn{border:1px solid var(--gold);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500}\n.gift-btn:hover{background:var(--gold);color:#2A1A20}\n.item.pledged{border-color:var(--gold)}\n.item.pledged .gift-btn{background:var(--gold);color:#2A1A20}\n\n/* Gallery */\n.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}\n.gallery figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--surface);border:1px solid var(--line);position:relative}\n.gallery figure:nth-child(2){transform:translateY(28px)}\n.gallery img{width:100%;height:100%;object-fit:cover}\n.gallery .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}\n\nfooter{text-align:center;padding:96px 20px 56px;color:var(--muted)}\nfooter .sig{font-family:\"Pinyon Script\",cursive;font-size:44px;color:var(--wine);margin:0}\n\n/* Dialog */\ndialog{border:0;border-radius:22px;padding:0;max-width:420px;width:calc(100% - 32px);background:var(--surface);color:var(--ink)}\ndialog::backdrop{background:rgba(30,8,16,.6)}\n.dlg{padding:30px}\n.dlg h3{font-family:\"Gloock\",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px;color:var(--wine)}\n.dlg .amt{font-size:15px;color:var(--muted);margin:0 0 18px}\n.dlg .box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}\n.dlg .box div{display:flex;justify-content:space-between;gap:12px;padding:4px 0;font-size:15px}\n.dlg .box span:first-child{color:var(--muted)}\n.dlg .box strong{text-align:right}\n.dlg .actions{display:flex;gap:10px;flex-wrap:wrap}\n.btn-solid{background:var(--wine);color:var(--bg);border:0;border-radius:999px;padding:11px 20px;font-weight:600}\n.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:11px 20px}\n.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:#3E1023;color:#FBF3F4;padding:12px 20px;border-radius:999px;font-size:15px;opacity:0;transition:opacity .25s, transform .25s;pointer-events:none;z-index:50}\n.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}\n\n@media (max-width:760px){\n  .account{grid-template-columns:1fr}\n  .account .left{border-right:0;border-bottom:1px solid var(--line)}\n  .gallery{grid-template-columns:repeat(2,1fr)}\n  .gallery figure:nth-child(2){transform:none}\n}\n@media (prefers-reduced-motion:reduce){*{transition:none!important}}\n\n.status{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:-8px 0 22px;color:var(--muted);font-size:15px}\n.bar{flex:1;min-width:160px;max-width:280px;height:6px;border-radius:9px;background:var(--line);overflow:hidden}\n.bar span{display:block;height:100%;background:var(--gold)}\n.owner-note{background:var(--surface);border:1px dashed var(--gold);border-radius:14px;padding:12px 16px;margin:0 0 22px;font-size:15px}\n.item.gifted{opacity:.62}\n.item.gifted .price{text-decoration:line-through}\n.badge{font-size:13px;font-weight:600;color:var(--gold)}\n.gift-btn:disabled{cursor:default;opacity:.7}\n.gift-btn.owner{border-style:dashed}\n\u003c/style>\n\u003c/head>\n\u003cbody>\n\n\u003cheader class=\"hero\">\n  \u003cp class=\"mono\">O &amp; A\u003c/p>\n  \u003ch1 class=\"names\">Oyinkansola\u003cspan class=\"and\">and\u003c/span>Ayolekan\u003c/h1>\n  \u003cp class=\"lede\">Thank you for celebrating with us. If you’d like to bless our new home, here are the things we’ll need as we start our life together.\u003c/p>\n  \u003cdiv class=\"arch-row\">\n    \u003cdiv class=\"arch\">\u003cdiv class=\"ph\">O\u003csmall>Bride’s photo\u003c/small>\u003c/div>\u003c/div>\n    \u003cdiv class=\"arch center\">\u003cdiv class=\"ph\">O&amp;A\u003csmall>Couple photo\u003c/small>\u003c/div>\u003c/div>\n    \u003cdiv class=\"arch\">\u003cdiv class=\"ph\">A\u003csmall>Groom’s photo\u003c/small>\u003c/div>\u003c/div>\n  \u003c/div>\n\u003c/header>\n\u003cmain>\n  \u003csection id=\"give\" aria-labelledby=\"give-h\">\n    \u003ch2 id=\"give-h\">Send a gift\u003c/h2>\n    \u003cp class=\"sub\">Every gift goes into one account. Pick an item below for a guide on how much to send, or give any amount you like.\u003c/p>\n    \u003cdiv class=\"account\">\n      \u003cdiv class=\"left\">\n        \u003col>\n          \u003cli>Choose an item that hasn’t been gifted yet, or decide on any amount.\u003c/li>\n          \u003cli>Transfer to the account shown here.\u003c/li>\n          \u003cli>Add your name and the item in the transfer narration so the couple knows who to thank.\u003c/li>\n        \u003c/ol>\n      \u003c/div>\n      \u003cdiv class=\"right\">\n        \u003cp class=\"acct-label\">Account number\u003c/p>\n        \u003cp class=\"acct-num\" id=\"acctNum\">0000000000\u003c/p>\n        \u003cp class=\"acct-meta\">\u003cspan style=\"color:#D9BFC6\">Bank:\u003c/span> \u003cspan id=\"acctBank\">Bank name\u003c/span>\u003c/p>\n        \u003cp class=\"acct-meta\">\u003cspan style=\"color:#D9BFC6\">Name:\u003c/span> \u003cspan id=\"acctName\">Oyinkansola Folorunsho\u003c/span>\u003c/p>\n        \u003cbutton class=\"copy-btn\" type=\"button\" data-copy>Copy account number\u003c/button>\n      \u003c/div>\n    \u003c/div>\n  \u003c/section>\n  \u003csection id=\"registry\" aria-labelledby=\"reg-h\">\n    \u003ch2 id=\"reg-h\">The registry\u003c/h2>\n    \u003cp class=\"sub\">Prices are a guide. Items already gifted are marked, so you can choose something still needed.\u003c/p>\n    \u003cdiv class=\"status\">\u003cspan id=\"countText\">\u003c/span>\u003cdiv class=\"bar\" aria-hidden=\"true\">\u003cspan id=\"barFill\" style=\"width:0\">\u003c/span>\u003c/div>\u003c/div>\n    \u003cp class=\"owner-note\" id=\"ownerNote\" hidden>You can manage this registry. When a transfer comes in, open the item and tap “Mark as gifted”. Every guest will see it.\u003c/p>\n    \u003cdiv class=\"filters\" role=\"group\" aria-label=\"Filter by room\">\n      \u003cbutton class=\"chip\" aria-pressed=\"true\" data-filter=\"all\">Everything\u003c/button>\n      \u003cbutton class=\"chip\" aria-pressed=\"false\" data-filter=\"Kitchen\">Kitchen\u003c/button>\n      \u003cbutton class=\"chip\" aria-pressed=\"false\" data-filter=\"Appliances\">Appliances\u003c/button>\n      \u003cbutton class=\"chip\" aria-pressed=\"false\" data-filter=\"Bedroom\">Bedroom &amp; bath\u003c/button>\n      \u003cbutton class=\"chip\" aria-pressed=\"false\" data-filter=\"Living\">Living room\u003c/button>\n      \u003cbutton class=\"chip\" aria-pressed=\"false\" data-filter=\"Funds\">Funds\u003c/button>\n    \u003c/div>\n    \u003cdiv class=\"registry\" id=\"registryList\">\u003c/div>\n  \u003c/section>\n  \u003csection id=\"us\" aria-labelledby=\"us-h\">\n    \u003ch2 id=\"us-h\">Us\u003c/h2>\n    \u003cp class=\"sub\">A few moments from our journey so far.\u003c/p>\n    \u003cdiv class=\"gallery\">\n      \u003cfigure>\u003cdiv class=\"ph\">Photo 1\u003c/div>\u003c/figure>\n      \u003cfigure>\u003cdiv class=\"ph\">Photo 2\u003c/div>\u003c/figure>\n      \u003cfigure>\u003cdiv class=\"ph\">Photo 3\u003c/div>\u003c/figure>\n    \u003c/div>\n  \u003c/section>\n\u003c/main>\n\u003cfooter>\n  \u003cp class=\"sig\">With love, O &amp; A\u003c/p>\n  \u003cp>Thank you for being part of our story.\u003c/p>\n\u003c/footer>\n\u003cdialog id=\"giftDialog\" aria-labelledby=\"dlgTitle\">\n  \u003cdiv class=\"dlg\">\n    \u003ch3 id=\"dlgTitle\">Gift\u003c/h3>\n    \u003cp class=\"amt\" id=\"dlgAmt\">\u003c/p>\n    \u003cdiv class=\"box\">\n      \u003cdiv>\u003cspan>Account number\u003c/span>\u003cstrong id=\"dlgNum\">\u003c/strong>\u003c/div>\n      \u003cdiv>\u003cspan>Bank\u003c/span>\u003cstrong id=\"dlgBank\">\u003c/strong>\u003c/div>\n      \u003cdiv>\u003cspan>Account name\u003c/span>\u003cstrong id=\"dlgName\">\u003c/strong>\u003c/div>\n      \u003cdiv>\u003cspan>Narration\u003c/span>\u003cstrong id=\"dlgNarr\">\u003c/strong>\u003c/div>\n    \u003c/div>\n    \u003cp class=\"amt\" id=\"dlgHint\" hidden>Once the couple sees your transfer, they’ll mark this item as gifted for everyone.\u003c/p>\n    \u003cdiv class=\"actions\">\n      \u003cbutton class=\"btn-solid\" type=\"button\" data-copy>Copy account number\u003c/button>\n      \u003cbutton class=\"btn-ghost\" type=\"button\" id=\"markBtn\" hidden>Mark as gifted\u003c/button>\n      \u003cbutton class=\"btn-ghost\" type=\"button\" id=\"closeBtn\">Close\u003c/button>\n    \u003c/div>\n  \u003c/div>\n\u003c/dialog>\n\u003cdiv class=\"toast\" id=\"toast\" role=\"status\" aria-live=\"polite\">\u003c/div>\n\n\u003cscript>\nconst SRC = __SRC__;\nconst STATE = __STATE__;\nconst ITEMS = [\n  {id:\"cooker\", cat:\"Kitchen\", emoji:\"🔥\", name:\"Gas cooker with oven\", desc:\"A 4-burner standing cooker for everyday meals and Sunday rice.\", price:350000},\n  {id:\"pots\", cat:\"Kitchen\", emoji:\"🍲\", name:\"Stainless pot set\", desc:\"Heavy-bottom pots for stew, soup and jollof.\", price:85000},\n  {id:\"nonstick\", cat:\"Kitchen\", emoji:\"🍳\", name:\"Non-stick frying pans\", desc:\"A set of three for eggs, plantain and quick stir-fries.\", price:45000},\n  {id:\"dinner\", cat:\"Kitchen\", emoji:\"🍽️\", name:\"Dinnerware set\", desc:\"Plates, bowls and side plates for six.\", price:60000},\n  {id:\"cutlery\", cat:\"Kitchen\", emoji:\"🥄\", name:\"Cutlery and serving set\", desc:\"Spoons, forks, knives and serving spoons for guests.\", price:35000},\n  {id:\"blender\", cat:\"Kitchen\", emoji:\"🫙\", name:\"Blender and grinder\", desc:\"For pepper, beans for moi moi and morning smoothies.\", price:55000},\n  {id:\"microwave\", cat:\"Appliances\", emoji:\"📦\", name:\"Microwave\", desc:\"Warming leftovers in seconds.\", price:95000},\n  {id:\"fridge\", cat:\"Appliances\", emoji:\"🧊\", name:\"Double-door refrigerator\", desc:\"Keeps soups, drinks and market runs fresh.\", price:650000},\n  {id:\"washer\", cat:\"Appliances\", emoji:\"🫧\", name:\"Washing machine\", desc:\"Front-load machine to save weekends.\", price:480000},\n  {id:\"inverter\", cat:\"Appliances\", emoji:\"🔋\", name:\"Inverter and batteries\", desc:\"Steady power when the light goes off.\", price:900000},\n  {id:\"ac\", cat:\"Appliances\", emoji:\"❄️\", name:\"Air conditioner\", desc:\"A 1.5HP split unit for the bedroom.\", price:420000},\n  {id:\"bedding\", cat:\"Bedroom\", emoji:\"🛏️\", name:\"Bedsheets and duvet set\", desc:\"Two sets of soft cotton sheets with a duvet.\", price:75000},\n  {id:\"towels\", cat:\"Bedroom\", emoji:\"🧺\", name:\"Bath towel set\", desc:\"Matching his-and-hers towels and hand towels.\", price:40000},\n  {id:\"curtains\", cat:\"Bedroom\", emoji:\"🪟\", name:\"Curtains and blinds\", desc:\"Blackout curtains for the bedroom and living room.\", price:120000},\n  {id:\"tv\", cat:\"Living\", emoji:\"📺\", name:\"Smart TV\", desc:\"A 55-inch screen for movie nights.\", price:550000},\n  {id:\"rug\", cat:\"Living\", emoji:\"🟫\", name:\"Living room rug\", desc:\"A warm, washable rug for the sitting room.\", price:90000},\n  {id:\"fan\", cat:\"Living\", emoji:\"🌀\", name:\"Standing fans\", desc:\"Two rechargeable fans for hot nights.\", price:70000},\n  {id:\"honeymoon\", cat:\"Funds\", emoji:\"✈️\", name:\"Honeymoon fund\", desc:\"Help us take a short trip to rest after the celebrations.\", price:null},\n  {id:\"home\", cat:\"Funds\", emoji:\"🏡\", name:\"New home fund\", desc:\"Towards rent, furniture and settling into our first home.\", price:null}\n];\n\nconst naira = n => \"₦\" + n.toLocaleString(\"en-NG\");\nconst $ = s => document.querySelector(s);\nconst list = $(\"#registryList\");\nlet current = null;\nlet manager = false;     // can this viewer save changes for everyone\nlet artifactApi = null;\nlet busy = false;\n\nconst isGifted = id => !!(STATE.gifted && STATE.gifted[id]);\nconst activeFilter = () => document.querySelector('.chip[aria-pressed=\"true\"]').dataset.filter;\n\nfunction buildPage(state){\n  const esc = v => JSON.stringify(v).replace(/\u003c/g, \"\\\\u003c\");\n  const srcLine = \"const SRC = \" + \"__\" + \"SRC\" + \"__;\";\n  const stateLine = \"const STATE = \" + \"__\" + \"STATE\" + \"__;\";\n  return SRC.split(stateLine).join(\"const STATE = \" + esc(state) + \";\")\n            .split(srcLine).join(\"const SRC = \" + esc(SRC) + \";\");\n}\n\nfunction renderStatus(){\n  const giftable = ITEMS.filter(i => i.price);\n  const done = giftable.filter(i => isGifted(i.id)).length;\n  $(\"#countText\").textContent = done + \" of \" + giftable.length + \" items gifted\";\n  $(\"#barFill\").style.width = (giftable.length ? Math.round(done / giftable.length * 100) : 0) + \"%\";\n}\n\nfunction render(filter){\n  list.innerHTML = \"\";\n  const rows = ITEMS.filter(i => filter === \"all\" || i.cat === filter)\n    .sort((a, b) => isGifted(a.id) - isGifted(b.id));\n  rows.forEach(i => {\n    const g = isGifted(i.id);\n    const el = document.createElement(\"article\");\n    el.className = \"item\" + (g ? \" gifted\" : \"\");\n    let label = \"Gift this\", disabled = false, cls = \"gift-btn\";\n    if (g && manager) { label = \"Gifted · edit\"; cls += \" owner\"; }\n    else if (g) { label = \"Gifted\"; disabled = true; }\n    el.innerHTML = `\n      \u003cdiv class=\"emoji\" aria-hidden=\"true\">${i.emoji}\u003c/div>\n      \u003ch3>\u003c/h3>\n      \u003cp>\u003c/p>\n      \u003cdiv class=\"row\">\n        \u003cspan class=\"price\">${i.price ? naira(i.price) : \"Any amount\"}\u003c/span>\n        \u003cbutton class=\"${cls}\" type=\"button\" ${disabled ? \"disabled\" : \"\"}>${label}\u003c/button>\n      \u003c/div>`;\n    el.querySelector(\"h3\").textContent = i.name;\n    el.querySelector(\"p\").textContent = i.desc;\n    el.querySelector(\"button\").addEventListener(\"click\", () => openGift(i));\n    list.appendChild(el);\n  });\n  renderStatus();\n}\n\nfunction openGift(i){\n  current = i;\n  $(\"#dlgTitle\").textContent = i.name;\n  $(\"#dlgAmt\").textContent = i.price ? \"Suggested amount: \" + naira(i.price) : \"Give whatever is on your heart.\";\n  $(\"#dlgNum\").textContent = $(\"#acctNum\").textContent;\n  $(\"#dlgBank\").textContent = $(\"#acctBank\").textContent;\n  $(\"#dlgName\").textContent = $(\"#acctName\").textContent;\n  $(\"#dlgNarr\").textContent = \"Your name + \" + i.name.split(\" \").slice(0, 2).join(\" \");\n  const canMark = manager && !!i.price;\n  $(\"#markBtn\").hidden = !canMark;\n  $(\"#markBtn\").textContent = isGifted(i.id) ? \"Mark as still needed\" : \"Mark as gifted\";\n  $(\"#dlgHint\").hidden = manager || !i.price;\n  $(\"#giftDialog\").showModal();\n}\n\n$(\"#closeBtn\").addEventListener(\"click\", () => $(\"#giftDialog\").close());\n\n$(\"#markBtn\").addEventListener(\"click\", async () => {\n  if (!current || !artifactApi || busy) return;\n  busy = true;\n  const next = { gifted: Object.assign({}, STATE.gifted || {}) };\n  if (next.gifted[current.id]) delete next.gifted[current.id];\n  else next.gifted[current.id] = new Date().toISOString().slice(0, 10);\n  $(\"#markBtn\").textContent = \"Saving…\";\n  try {\n    await artifactApi.publish(buildPage(next));\n    toast(\"Saved for everyone\");   // the page reloads to the new version\n  } catch (e) {\n    const code = e && e.code;\n    if (code === \"conflict\") { /* page is reloading to the latest version */ }\n    else if (code === \"not_writer\" || code === \"not_granted\" || code === \"not_declared\" || code === \"consent_required\" || code === \"capability_disabled\") {\n      manager = false; $(\"#ownerNote\").hidden = true; $(\"#giftDialog\").close();\n      render(activeFilter()); toast(\"This view can’t change the registry\");\n    } else if (code === \"rate_limited\") { toast(\"Too many changes at once. Try again in a minute.\"); }\n    else { toast(\"Couldn’t save. Try again.\"); }\n    busy = false;\n    $(\"#markBtn\").textContent = isGifted(current.id) ? \"Mark as still needed\" : \"Mark as gifted\";\n  }\n});\n\nfunction toast(msg){\n  const t = $(\"#toast\"); t.textContent = msg; t.classList.add(\"show\");\n  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove(\"show\"), 2400);\n}\n\nasync function copyNum(){\n  const num = $(\"#acctNum\").textContent.trim();\n  try { await navigator.clipboard.writeText(num); toast(\"Account number copied\"); }\n  catch (e) {\n    const ta = document.createElement(\"textarea\"); ta.value = num; document.body.appendChild(ta);\n    ta.select(); let ok = false; try { ok = document.execCommand(\"copy\"); } catch (_) {}\n    ta.remove(); toast(ok ? \"Account number copied\" : \"Copy failed. Hold the number to select it.\");\n  }\n}\ndocument.querySelectorAll(\"[data-copy]\").forEach(b => b.addEventListener(\"click\", copyNum));\n\ndocument.querySelectorAll(\".chip\").forEach(c => c.addEventListener(\"click\", () => {\n  document.querySelectorAll(\".chip\").forEach(x => x.setAttribute(\"aria-pressed\", \"false\"));\n  c.setAttribute(\"aria-pressed\", \"true\");\n  render(c.dataset.filter);\n}));\n\nrender(\"all\");\n\n(async () => {\n  if (!window.claude || !window.claude.use) return;\n  try {\n    const [user, art] = await Promise.all([claude.use(\"user\"), claude.use(\"artifact\")]);\n    if (!art) return;\n    const editor = user ? await user.canEdit() : false;\n    if (editor) {\n      artifactApi = art; manager = true;\n      $(\"#ownerNote\").hidden = false;\n      render(activeFilter());\n    }\n  } catch (e) { /* read-only view */ }\n})();\n\u003c/script>\n\u003c/body>\n\u003c/html>\n";
+const STATE = {"gifted":{}};
+const ITEMS = [
+  {id:"cooker", cat:"Kitchen", emoji:"🔥", name:"Gas cooker with oven", desc:"A 4-burner standing cooker for everyday meals and Sunday rice.", price:350000},
+  {id:"pots", cat:"Kitchen", emoji:"🍲", name:"Stainless pot set", desc:"Heavy-bottom pots for stew, soup and jollof.", price:85000},
+  {id:"nonstick", cat:"Kitchen", emoji:"🍳", name:"Non-stick frying pans", desc:"A set of three for eggs, plantain and quick stir-fries.", price:45000},
+  {id:"dinner", cat:"Kitchen", emoji:"🍽️", name:"Dinnerware set", desc:"Plates, bowls and side plates for six.", price:60000},
+  {id:"cutlery", cat:"Kitchen", emoji:"🥄", name:"Cutlery and serving set", desc:"Spoons, forks, knives and serving spoons for guests.", price:35000},
+  {id:"blender", cat:"Kitchen", emoji:"🫙", name:"Blender and grinder", desc:"For pepper, beans for moi moi and morning smoothies.", price:55000},
+  {id:"microwave", cat:"Appliances", emoji:"📦", name:"Microwave", desc:"Warming leftovers in seconds.", price:95000},
+  {id:"fridge", cat:"Appliances", emoji:"🧊", name:"Double-door refrigerator", desc:"Keeps soups, drinks and market runs fresh.", price:650000},
+  {id:"washer", cat:"Appliances", emoji:"🫧", name:"Washing machine", desc:"Front-load machine to save weekends.", price:480000},
+  {id:"inverter", cat:"Appliances", emoji:"🔋", name:"Inverter and batteries", desc:"Steady power when the light goes off.", price:900000},
+  {id:"ac", cat:"Appliances", emoji:"❄️", name:"Air conditioner", desc:"A 1.5HP split unit for the bedroom.", price:420000},
+  {id:"bedding", cat:"Bedroom", emoji:"🛏️", name:"Bedsheets and duvet set", desc:"Two sets of soft cotton sheets with a duvet.", price:75000},
+  {id:"towels", cat:"Bedroom", emoji:"🧺", name:"Bath towel set", desc:"Matching his-and-hers towels and hand towels.", price:40000},
+  {id:"curtains", cat:"Bedroom", emoji:"🪟", name:"Curtains and blinds", desc:"Blackout curtains for the bedroom and living room.", price:120000},
+  {id:"tv", cat:"Living", emoji:"📺", name:"Smart TV", desc:"A 55-inch screen for movie nights.", price:550000},
+  {id:"rug", cat:"Living", emoji:"🟫", name:"Living room rug", desc:"A warm, washable rug for the sitting room.", price:90000},
+  {id:"fan", cat:"Living", emoji:"🌀", name:"Standing fans", desc:"Two rechargeable fans for hot nights.", price:70000},
+  {id:"honeymoon", cat:"Funds", emoji:"✈️", name:"Honeymoon fund", desc:"Help us take a short trip to rest after the celebrations.", price:null},
+  {id:"home", cat:"Funds", emoji:"🏡", name:"New home fund", desc:"Towards rent, furniture and settling into our first home.", price:null}
+];
+
+const naira = n => "₦" + n.toLocaleString("en-NG");
+const $ = s => document.querySelector(s);
+const list = $("#registryList");
+let current = null;
+let manager = false;     // can this viewer save changes for everyone
+let artifactApi = null;
+let busy = false;
+
+const isGifted = id => !!(STATE.gifted && STATE.gifted[id]);
+const activeFilter = () => document.querySelector('.chip[aria-pressed="true"]').dataset.filter;
+
+function buildPage(state){
+  const esc = v => JSON.stringify(v).replace(/</g, "\\u003c");
+  const srcLine = "const SRC = " + "__" + "SRC" + "__;";
+  const stateLine = "const STATE = " + "__" + "STATE" + "__;";
+  return SRC.split(stateLine).join("const STATE = " + esc(state) + ";")
+            .split(srcLine).join("const SRC = " + esc(SRC) + ";");
+}
+
+function renderStatus(){
+  const giftable = ITEMS.filter(i => i.price);
+  const done = giftable.filter(i => isGifted(i.id)).length;
+  $("#countText").textContent = done + " of " + giftable.length + " items gifted";
+  $("#barFill").style.width = (giftable.length ? Math.round(done / giftable.length * 100) : 0) + "%";
+}
+
+function render(filter){
+  list.innerHTML = "";
+  const rows = ITEMS.filter(i => filter === "all" || i.cat === filter)
+    .sort((a, b) => isGifted(a.id) - isGifted(b.id));
+  rows.forEach(i => {
+    const g = isGifted(i.id);
+    const el = document.createElement("article");
+    el.className = "item" + (g ? " gifted" : "");
+    let label = "Gift this", disabled = false, cls = "gift-btn";
+    if (g && manager) { label = "Gifted · edit"; cls += " owner"; }
+    else if (g) { label = "Gifted"; disabled = true; }
+    el.innerHTML = `
+      <div class="emoji" aria-hidden="true">${i.emoji}</div>
+      <h3></h3>
+      <p></p>
+      <div class="row">
+        <span class="price">${i.price ? naira(i.price) : "Any amount"}</span>
+        <button class="${cls}" type="button" ${disabled ? "disabled" : ""}>${label}</button>
+      </div>`;
+    el.querySelector("h3").textContent = i.name;
+    el.querySelector("p").textContent = i.desc;
+    el.querySelector("button").addEventListener("click", () => openGift(i));
+    list.appendChild(el);
+  });
+  renderStatus();
+}
+
+function openGift(i){
+  current = i;
+  $("#dlgTitle").textContent = i.name;
+  $("#dlgAmt").textContent = i.price ? "Suggested amount: " + naira(i.price) : "Give whatever is on your heart.";
+  $("#dlgNum").textContent = $("#acctNum").textContent;
+  $("#dlgBank").textContent = $("#acctBank").textContent;
+  $("#dlgName").textContent = $("#acctName").textContent;
+  $("#dlgNarr").textContent = "Your name + " + i.name.split(" ").slice(0, 2).join(" ");
+  const canMark = manager && !!i.price;
+  $("#markBtn").hidden = !canMark;
+  $("#markBtn").textContent = isGifted(i.id) ? "Mark as still needed" : "Mark as gifted";
+  $("#dlgHint").hidden = manager || !i.price;
+  $("#giftDialog").showModal();
+}
+
+$("#closeBtn").addEventListener("click", () => $("#giftDialog").close());
+
+$("#markBtn").addEventListener("click", async () => {
+  if (!current || !artifactApi || busy) return;
+  busy = true;
+  const next = { gifted: Object.assign({}, STATE.gifted || {}) };
+  if (next.gifted[current.id]) delete next.gifted[current.id];
+  else next.gifted[current.id] = new Date().toISOString().slice(0, 10);
+  $("#markBtn").textContent = "Saving…";
+  try {
+    await artifactApi.publish(buildPage(next));
+    toast("Saved for everyone");   // the page reloads to the new version
+  } catch (e) {
+    const code = e && e.code;
+    if (code === "conflict") { /* page is reloading to the latest version */ }
+    else if (code === "not_writer" || code === "not_granted" || code === "not_declared" || code === "consent_required" || code === "capability_disabled") {
+      manager = false; $("#ownerNote").hidden = true; $("#giftDialog").close();
+      render(activeFilter()); toast("This view can’t change the registry");
+    } else if (code === "rate_limited") { toast("Too many changes at once. Try again in a minute."); }
+    else { toast("Couldn’t save. Try again."); }
+    busy = false;
+    $("#markBtn").textContent = isGifted(current.id) ? "Mark as still needed" : "Mark as gifted";
+  }
+});
+
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+async function copyNum(){
+  const num = $("#acctNum").textContent.trim();
+  try { await navigator.clipboard.writeText(num); toast("Account number copied"); }
+  catch (e) {
+    const ta = document.createElement("textarea"); ta.value = num; document.body.appendChild(ta);
+    ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (_) {}
+    ta.remove(); toast(ok ? "Account number copied" : "Copy failed. Hold the number to select it.");
+  }
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", copyNum));
+
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+  c.setAttribute("aria-pressed", "true");
+  render(c.dataset.filter);
+}));
+
+render("all");
+
+(async () => {
+  if (!window.claude || !window.claude.use) return;
+  try {
+    const [user, art] = await Promise.all([claude.use("user"), claude.use("artifact")]);
+    if (!art) return;
+    const editor = user ? await user.canEdit() : false;
+    if (editor) {
+      artifactApi = art; manager = true;
+      $("#ownerNote").hidden = false;
+      render(activeFilter());
+    }
+  } catch (e) { /* read-only view */ }
+})();
+</script>
+</body>
+</html>
